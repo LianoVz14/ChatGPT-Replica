@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ChatGPT Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="predefined-messages">
+        <h3>Click a message to send:</h3>
+        <ul id="messageList">
+            <li onclick="sendPredefinedMessage('What is your name?')">What is your name?</li>
+            <li onclick="sendPredefinedMessage('How are you?')">How are you?</li>
+            <li onclick="sendPredefinedMessage('Tell me a joke.')">Tell me a joke.</li>
+            <li onclick="sendPredefinedMessage('What is the weather like?')">What is the weather like?</li>
+        </ul>
+    </div>
+    <div class="chat-container">
+        <div class="chat-header" role="banner">ChatGPT</div>
+        <div class="chat-window" id="chatWindow" aria-live="polite" role="region" aria-labelledby="chatWindow"></div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="Type your message..." aria-label="Type your message">
+            <button id="sendButton" aria-label="Send message">Send</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Focus on the input field when the page loads
+        document.getElementById('messageInput').focus();
+
+        // Add event listener to button instead of using inline onclick
+        document.getElementById('sendButton').addEventListener('click', function() {
+            sendMessage();
+        });
+
+        // Optional: Add event listener to input to allow pressing Enter to send
+        document.getElementById('messageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
